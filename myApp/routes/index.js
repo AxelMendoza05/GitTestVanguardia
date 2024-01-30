@@ -7,10 +7,12 @@ const localData = require("../Utils/data.js");
 router.get("/", async function (req, res, next) {
   try {
     const response = await axios.get("http://localhost:3000/data");
+    //const response = await axios.get(process.env.WEATHER_API);
     res.render("index", {
       title: "My Branch ",
       localData: response.data,
     });
+
   } catch (error) {
     console.error("Error al hacer la solicitud con Axios:", error.message);
     res.status(500).send("Error interno del servidor");
@@ -20,5 +22,11 @@ router.get("/", async function (req, res, next) {
 router.get("/data", (req, res) => {
   res.json(localData);
 });
+
+
+
+
+
+
 
 module.exports = router;
