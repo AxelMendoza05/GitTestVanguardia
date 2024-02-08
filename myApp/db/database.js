@@ -1,21 +1,17 @@
 const mongoose = require('mongoose');
 const loadData = require('../db-scripts/base-data');
+require("dotenv").config();
 
-module.exports = async function db({ test = false }) {
+module.exports = async function Mongodb_Connection({ test = false }) {
   try {
-    // Cambia la URL de conexión a tu base de datos MongoDB
-    const uri = process.env.MONGO_DB;
+    
+    const uri = `mongodb+srv://axelmendoza0501:${process.env.MONGO_PASSWORD}@cluster0.istvn3u.mongodb.net/${'Vanguardia'}?retryWrites=true&w=majority`;
+    
+    console.log(uri);
 
-    // Conéctate a la base de datos MongoDB
-    await mongoose.connect(uri, {});
+    await mongoose.connect(uri);
     console.log('« Connected to MongoDB. Loading base data... »');
 
-    if (!test) {
-      console.log('« ...Loading base data... »');
-      // Descomenta esta línea cuando quieras cargar datos en tu base de datos
-      // await loadData();
-      console.log('« Base data loaded to MongoDB! »');
-    }
   } catch (e) {
     console.error('Error connecting to MongoDB:', e);
     throw e;
