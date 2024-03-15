@@ -1,4 +1,4 @@
-const BooksModel = require("../db-models/books.model")
+const BooksModel = require("../db-models/schemas.BookSchema")
 
 module.exports = loadData = async ()=>{
     for (const book of booksJSON){

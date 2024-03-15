@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const loadData = require('../db-scripts/base-data');
 require("dotenv").config();
 
 module.exports = async function Mongodb_Connection({ test = false }) {
